@@ -7,7 +7,7 @@ function main() {
 
     $userInput = fgets(STDIN);
 
-    $availableCommands = [];
+    $availableCommands = ["exit"];
 
     $userInput = rtrim($userInput, "\n");
 
@@ -16,6 +16,8 @@ function main() {
 
         if ($commandArray[0] && !in_array($commandArray[0], $availableCommands)) {
             fwrite(STDOUT, $commandArray[0] . ": command not found\r\n");
+        }else {
+            call_user_func($commandArray[0] . "_command");
         }
     }
 
@@ -23,3 +25,7 @@ function main() {
 }
 
 main();
+
+function exit_command() {
+    exit(0);
+};
