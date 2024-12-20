@@ -7,7 +7,7 @@ function exit_command() {
 };
 
 function echo_command($input) {
-    fwrite(STDOUT, str_replace("$", "", implode(" ", $input)));
+    fwrite(STDOUT, str_replace("$", "", implode(" ", $input)) . "\n");
 };
 
 function main() {
@@ -28,6 +28,8 @@ function main() {
             call_user_func($commandArray[0] . "_command", array_slice($commandArray, 1));
         }
     }
+
+    main();
 }
 
 main();
