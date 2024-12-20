@@ -4,19 +4,16 @@ error_reporting(E_ALL);
 
 $availableCommands = [];
 
-function main() {
-    fwrite(STDOUT, "$ ");
 
-    $userInput = fgets(STDIN);
+fwrite(STDOUT, "$ ");
 
-    $userInput = rtrim($userInput, "\n");
+$userInput = fgets(STDIN);
 
-    if($userInput) {
-        $commandArray = explode(" ", $userInput);
-        if($commandArray[0] && !in_array($commandArray[0], $availableCommands)) {
-            fwrite(STDOUT, $commandArray[0] . ": command not found\r\n");
-        }
+$userInput = rtrim($userInput, "\n");
+
+if($userInput){
+    $commandArray = explode(" ", $userInput);
+    if($commandArray[0] && !in_array($commandArray[0], $availableCommands)) {
+        fwrite(STDOUT, $commandArray[0] . ": command not found\r\n");
     }
 }
-
-main();
